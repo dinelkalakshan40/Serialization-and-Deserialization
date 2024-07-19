@@ -1,17 +1,26 @@
 package lk.ijse;
 
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
+import java.io.*;
+
 public class Main {
     public static void main(String[] args) {
-        //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
-        // to see how IntelliJ IDEA suggests fixing it.
-        System.out.printf("Hello and welcome!");
+        Person person = new Person("Dinelka", 12345);
 
-        for (int i = 1; i <= 5; i++) {
-            //TIP Press <shortcut actionId="Debug"/> to start debugging your code. We have set one <icon src="AllIcons.Debugger.Db_set_breakpoint"/> breakpoint
-            // for you, but you can always add more by pressing <shortcut actionId="ToggleLineBreakpoint"/>.
-            System.out.println("i = " + i);
+        // Serialize object
+        try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("person.ser"))) {
+            oos.writeObject(person);
+            System.out.println("Serialization done: " + person);
+        } catch (IOException e) {
+            e.printStackTrace();
         }
-    }
+
+        // Deserialize object
+        try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream("person.ser"))) {
+            Person deserializedEmployee = (Person) ois.readObject();
+            System.out.println("Deserialization done: " + deserializedEmployee);
+        } catch (IOException | ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+
+        }
 }

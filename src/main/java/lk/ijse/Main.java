@@ -16,8 +16,8 @@ public class Main {
 
         // Deserialize object
         try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream("person.ser"))) {
-            Person deserializedEmployee = (Person) ois.readObject();
-            System.out.println("Deserialization done: " + deserializedEmployee);
+            Person deserializedPerson = (Person) ois.readObject();
+            System.out.println("Deserialization done: " + deserializedPerson);
         } catch (IOException | ClassNotFoundException e) {
             e.printStackTrace();
         }

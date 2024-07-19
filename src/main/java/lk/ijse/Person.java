@@ -4,20 +4,20 @@ import java.io.Serializable;
 
 public class Person implements Serializable {
     private static final long serialVersionUID = 1l;
-    private String code;
+    private String name;
     private int id;
 
     public Person(String code, int id) {
-        this.code = code;
+        this.name = code;
         this.id = id;
     }
 
     public String getCode() {
-        return code;
+        return name;
     }
 
     public void setCode(String code) {
-        this.code = code;
+        this.name = code;
     }
 
     public int getId() {
@@ -30,8 +30,8 @@ public class Person implements Serializable {
 
     @Override
     public String toString() {
-        return "Person{" +
-                "code='" + code + '\'' +
+        return "Person {" +
+                " name=" + name +
                 ", id=" + id +
                 '}';
     }
